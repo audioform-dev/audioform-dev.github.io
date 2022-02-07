@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="compiled_style.css" />
+    <script
+      defer
+      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-RS4RZVTNLD"
+    ></script>
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-NC4SDK6");
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-RS4RZVTNLD");
+    </script>
+
+    <title>Beat Trigger | Sync visuals to music the easy way</title>
+    <link rel="shortcut icon" type="image/svg" href="./favicon.svg" />
+    <style>
+      [x-cloak] {
+        display: none !important;
+      }
+    </style>
+  </head>
+
+  <script>
+    var operating_system = "Unknown";
+    if (navigator.appVersion.indexOf("Win") != -1) operating_system = "Windows";
+    if (navigator.appVersion.indexOf("Mac") != -1) operating_system = "MacOS";
+
+    var download_url_windows =
+      "https://drive.google.com/file/d/1naxohzknwExf3SEA4FvccOmRUiQmyjVw/view?usp=sharing";
+    var download_url_mac =
+      "https://drive.google.com/drive/folders/14V9TZ9cKn2dgz0PID2VvBEIX6QM2SQuH";
+
+    var download_url =
+      operating_system == "MacOS" ? download_url_mac : download_url_windows;
+    function download_beat_trigger() {
+      window.open(download_url, "_blank").focus();
+    }
+  </script>
+
+  <body class="bg-gray-900 pt-16 text-gray-50">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-NC4SDK6"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Nav bar -->
+    <div
+      x-data="{ isOpen : false}"
+      class="fixed top-0 z-50 flex w-full items-center justify-between bg-gray-900 bg-opacity-75 p-4 shadow-xl backdrop-blur-lg backdrop-filter"
+    >
+      <a href="/" class="z-50 h-full">
+        <img
+          src="./assets/img/Logo/LogoforResolume.svg"
+          alt="Beat Trigger Logo"
+        />
+      </a>
+      <div
+        @click="isOpen = !isOpen"
+        class="z-50 block cursor-pointer p-1 md:hidden"
+      >
+        <svg
+          x-show="!isOpen"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="#E2E8F0"
+          viewBox="0 0 256 256"
+        >
+          <rect width="256" height="256" fill="none"></rect>
+          <line
+            x1="40"
+            y1="128"
+            x2="216"
+            y2="128"
+            stroke="#E2E8F0"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="16"
+          ></line>
+          <line
+            x1="40"
+            y1="64"
+            x2="216"
+            y2="64"
+            stroke="#E2E8F0"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="16"
+          ></line>
+          <line
+            x1="40"
+            y1="192"
+            x2="216"
+            y2="192"
+            stroke="#E2E8F0"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="16"
+          ></line>
+        </svg>
+        <svg
+          x-cloak
+          x-show="isOpen"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M6.41638 17.8336L18.0836 6.16636"
+            stroke="#E2E8F0"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M6.41638 6.16638L18.0836 17.8336"
+            stroke="#E2E8F0"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
+
+      <div class="text-md hidden items-center gap-6 md:flex">
+        <a href="" class="hover:opacity-50">About</a>
+        <a href="" class="hover:opacity-50">Feedback</a>
+        <button
+          class="rounded-xl border border-cyan-500 bg-cyan-900 bg-opacity-50 py-2 px-4 font-semibold hover:bg-opacity-80"
+          onclick="download_beat_trigger()"
+        >
+          Download <span class="font-light opacity-50">Beta 1.0</span>
+        </button>
+      </div>
+
+      <div
+        x-cloak
+        x-show="isOpen"
+        class="fixed inset-0 z-40 flex h-screen w-screen flex-col items-center justify-center gap-8 bg-gray-900 bg-opacity-95 p-4 backdrop-blur-sm"
+      >
+        <a href="" class="text-xl font-semibold leading-7 hover:opacity-50"
+          >About</a
+        >
+        <a href="" class="text-xl font-semibold leading-7 hover:opacity-50"
+          >Feedback</a
+        >
+        <button
+          class="rounded-xl border border-cyan-500 bg-cyan-900 bg-opacity-50 py-3 px-6 text-xl font-semibold leading-7 hover:bg-opacity-80"
+          onclick="download_beat_trigger()"
+        >
+          Download <span class="font-light opacity-50">Beta 1.0</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="relative w-screen">
+      <!-- Hero -->
+      <div
+        class="container mx-auto flex max-w-7xl flex-col gap-y-10 gap-x-14 px-4 py-10 md:flex-row md:justify-center md:px-16 md:py-16"
+      >
+        <img
+          src="./assets/img/Images/Hero.jpg"
+          alt="Decorative image of a concert"
+          class="absolute inset-0 z-0 h-full w-full object-cover md:opacity-90"
+        />
+
+        <div
+          class="z-10 flex flex-col items-start justify-center gap-y-4 md:w-1/2"
+        >
+          <h1 class="leading-12 text-5xl font-extrabold">
+            Sync your visuals to live music.
+            <span class="block text-cyan-400">The easy way.</span>
+          </h1>
+          <p class="text-lg font-medium leading-7 text-gray-200">
+            Beat Trigger listens to any audio you send to it, analyzes it, and
+            sends the tempo to Resolume so you never have to hit that tap button
+            again.
+          </p>
+          <button
+            class="flex items-center rounded-lg bg-cyan-600 py-3 px-4 hover:bg-cyan-700"
+            onclick="download_beat_trigger()"
+          >
+            Download Beat Trigger
+            <span class="ml-1 font-light opacity-50">Beta 1.0</span>
+          </button>
+        </div>
+
+        <div class="z-10 items-start gap-y-4 md:w-1/2 md:pl-20">
+          <img
+            src="./assets/img/Images/Hero Product Image @3x.png"
+            alt="Beat Trigger application window"
+            class="z-10"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="container mx-auto max-w-7xl flex-col gap-y-10 md:gap-y-32 md:px-8 lg:px-16"
+    >
+      <!-- VP 1 -->
+      <div
+        class="flex flex-col gap-y-6 gap-x-8 p-4 pt-10 md:flex-row-reverse lg:gap-x-16 lg:p-16"
+      >
+        <div
+          class="flex flex-col items-start justify-center gap-y-4 md:w-1/2 lg:px-16"
+        >
+          <div
+            class="inline-block rounded-lg bg-gradient-to-br from-cyan-500 to-cyan-900 p-2 shadow-glow"
+          >
+            <img
+              src="./assets/img/VP Icons/VP Icons/Analyze.svg"
+              alt="Decorative icon"
+              class="h-6 w-6"
+            />
+          </div>
+          <h2 class="text-3xl font-semibold lg:font-bold">
+            Analyze the tempo of any audio signal
+          </h2>
+          <p class="text-gray-300">
+            Beat Trigger listens to you mic or audio input and uses a
+            proprietary machine learning algorithm to analyze its tempo. The
+            tempo is sent to Resolume as an OSC signal.
+          </p>
+        </div>
+        <div class="flex items-center justify-center overflow-hidden md:w-1/2">
+          <img
+            src="./assets/img/VP Images/Analyze the tempo@3x.png"
+            alt=""
+            class="rounded-2xl lg:rounded-t-3xl"
+          />
+        </div>
+      </div>
+
+      <!-- VP 2 -->
+      <div
+        class="flex flex-col gap-y-6 gap-x-8 p-4 pt-10 md:flex-row lg:gap-x-16 lg:p-16"
+      >
+        <div
+          class="flex flex-col items-start justify-center gap-y-4 md:w-1/2 lg:px-16"
+        >
+          <div
+            class="inline-block rounded-lg bg-gradient-to-br from-cyan-500 to-cyan-900 p-2 shadow-glow"
+          >
+            <img
+              src="./assets/img/VP Icons/VP Icons/Resolume icon.svg"
+              alt="Decorative icon"
+              class="h-6 w-6"
+            />
+          </div>
+          <h2 class="text-3xl font-semibold lg:font-bold">
+            Integrate directly with Resolume Arena
+          </h2>
+          <p class="text-gray-300">
+            BeatTrigger is built to integrate seamlessly with Resolume Arena.
+            Just start it and you’ll be able to send an OSC tempo signal
+            directly into your Resolume instance.
+          </p>
+        </div>
+        <div class="flex items-center justify-center overflow-hidden md:w-1/2">
+          <img
+            src="./assets/img/VP Images/Connect to beat trigger@3x.png"
+            alt=""
+            class="rounded-2xl lg:rounded-t-3xl"
+          />
+        </div>
+      </div>
+
+      <!-- VP 3 -->
+      <div
+        class="flex flex-col gap-y-6 gap-x-8 p-4 pt-10 md:flex-row-reverse lg:gap-x-16 lg:p-16"
+      >
+        <div
+          class="flex flex-col items-start justify-center gap-y-4 md:w-1/2 lg:px-16"
+        >
+          <div
+            class="inline-block rounded-lg bg-gradient-to-br from-cyan-500 to-cyan-900 p-2 shadow-glow"
+          >
+            <img
+              src="./assets/img/VP Icons/VP Icons/Input.svg"
+              alt="Decorative icon"
+              class="h-6 w-6"
+            />
+          </div>
+          <h2 class="text-3xl font-semibold lg:font-bold">
+            Control your tempo output on the fly with OSC
+          </h2>
+          <p class="text-gray-300">
+            Control the tempo ouput on the fly with your own MIDI controllers or
+            input devices. Beat Trigger allows you to use custom OSC input paths
+            for ultimate control.
+          </p>
+        </div>
+        <div class="flex items-center justify-center overflow-hidden md:w-1/2">
+          <img
+            src="./assets/img/VP Images/Control your tempo@3x.png"
+            alt=""
+            class="rounded-2xl lg:rounded-t-3xl"
+          />
+        </div>
+      </div>
+
+      <!-- Other features -->
+      <div class="flex flex-col gap-4 p-4 md:flex-row md:gap-8 lg:gap-8 lg:p-8">
+        <div class="flex flex-col gap-4 md:w-1/2 md:gap-6 lg:w-2/3 lg:flex-row">
+          <div
+            class="relative flex flex-col items-start justify-end gap-8 overflow-hidden rounded-3xl bg-gradient-to-br from-[rgba(14,116,144,.2)] to-[rgba(22,78,99,.05)] p-8"
+          >
+            <img
+              class="absolute -top-32 -right-16"
+              src="./assets/img/Big Icons/works-offline.png"
+              alt=""
+            />
+            <div
+              class="inline-block rounded-lg bg-gradient-to-br from-cyan-500 to-cyan-900 p-2 shadow-glow"
+            >
+              <img
+                src="./assets/img/VP Icons/VP Icons/Offline.svg"
+                alt="Decorative icon"
+                class="h-6 w-6"
+              />
+            </div>
+            <div>
+              <h3 class="mb-2 text-2xl font-bold leading-8">Works offline</h3>
+              <p class="text-gray-300">
+                Beat Trigger works without an internet connection for even the
+                most remote of venues.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="relative flex flex-col items-start justify-end gap-8 overflow-hidden rounded-3xl bg-gradient-to-br from-[rgba(14,116,144,.2)] to-[rgba(22,78,99,.05)] p-8"
+          >
+            <img
+              class="absolute -top-32 -right-16"
+              src="./assets/img/Big Icons/powered-by-osc.png"
+              alt=""
+            />
+            <div
+              class="inline-block rounded-lg bg-gradient-to-br from-cyan-500 to-cyan-900 p-2 shadow-glow"
+            >
+              <img
+                src="./assets/img/VP Icons/VP Icons/Puzzle.svg"
+                alt="Decorative icon"
+                class="h-6 w-6"
+              />
+            </div>
+            <div>
+              <h3 class="mb-2 text-2xl font-bold leading-8">Powered by OSC</h3>
+              <p class="text-gray-300">
+                Beat Trigger uses the common OSC standard so it fits right in
+                with your existing workflow and tooling.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="to-[rgba(22, 78, 99, 0.4)] lg: relative flex flex-col items-start overflow-hidden rounded-3xl bg-gradient-to-br from-cyan-800 md:w-1/2"
+        >
+          <div
+            class="h-40 w-full overflow-hidden bg-gray-800 px-8 md:h-1/2 lg:h-40"
+          >
+            <img
+              src="./assets/img/Images/Hero Product Image @3x.png"
+              alt="Beat Trigger application window"
+              class="max-w-3/4 z-10 mx-auto mt-4"
+            />
+          </div>
+
+          <div class="w-full p-8">
+            <h3 class="mb-4 text-2xl font-bold leading-8">
+              You'll never hit the tap button again
+            </h3>
+            <button
+              class="flex w-full items-center justify-center rounded-lg bg-cyan-600 py-3 px-4 hover:bg-cyan-700"
+              onclick="download_beat_trigger()"
+            >
+              Download Beat Trigger
+              <span class="ml-1 font-light opacity-50">Beta 1.0</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer
+      class="flex flex-col place-content-center gap-4 border-t border-gray-800 p-8 text-center items-center"
+      x-data="{ year() }"
+    >
+      <img src="./assets/img/Logo/Footer Logo.svg" class="w-32 justify-center" alt="" />
+      <a href="#">About</a>
+      <a href="#">Feedback</a>
+      <span class="text-xs font-medium leading-4 text-gray-500"
+        >&copy Audioform <span x-text="year"></span
+      ></span>
+    </footer>
+
+    <script type="module" src="/main.js"></script>
+    <script>
+      function year() {
+        return new Date().getFullYear();
+      }
+    </script>
+  </body>
+</html>

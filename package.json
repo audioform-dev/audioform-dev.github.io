@@ -1,0 +1,17 @@
+{
+  "name": "audioform-site",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.2",
+    "postcss": "^8.4.5",
+    "prettier": "^2.5.1",
+    "prettier-plugin-tailwindcss": "^0.1.5",
+    "tailwindcss": "^3.0.18",
+    "vite": "^2.6.4"
+  }
+}
